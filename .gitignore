@@ -1,4 +1,5 @@
 roles/*/
+roles_work/*/
 ansible_collections/*/
 playbooks/*/
 environments/*/
