@@ -1,0 +1,9 @@
+{
+  "ansible.ansible.path": "~/python_venv/ansible_6.4.0/bin/ansible",
+  "ansible.ansible.useFullyQualifiedCollectionNames": true,
+  "ansible.ansibleLint.enabled": true,
+  "ansible.ansibleLint.path": "~/python_venv/ansible_6.4.0/bin/ansible-lint",
+  "ansible.ansibleNavigator.path": "~/python_venv/ansible_6.4.0/bin/ansible-navigator",
+  "ansible.python.interpreterPath": "~/python_venv/ansible_6.4.0/bin/python3",
+  "task.allowAutomaticTasks": "on",
+}
