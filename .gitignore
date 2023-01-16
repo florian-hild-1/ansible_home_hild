@@ -1,8 +1,12 @@
-roles/*/
+roles/
 roles_work/*/
 ansible_collections/*/
-playbooks/*/
+playbooks/
 environments/*/
+files_cache/
+ansible-config/
+old_files/
+playbooks_local/
 
 # Ansible Galaxy
 meta/.galaxy_install_info
