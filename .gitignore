@@ -10,6 +10,7 @@ playbooks_local/
 roles_wip
 ansible_collections
 ansible_collections_wip
+cache
 
 # Ansible Galaxy
 meta/.galaxy_install_info
