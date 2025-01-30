@@ -2,7 +2,7 @@ roles/
 roles_work/*/
 ansible_collections/*/
 playbooks/
-environments/*/
+environments/
 files_cache/
 ansible-config/
 old_files/
