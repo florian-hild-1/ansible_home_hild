@@ -1,0 +1,18 @@
+---
+# Ansible requirements using ansible-galaxy
+# Use: ansible-galaxy collection install --upgrade -r requirements.yml
+
+collections:
+  - ansible.posix
+  - ansible.utils
+  - community.general
+  - community.zabbix
+  - community.crypto
+  # - ansible.windows
+  # - community.docker
+  # - containers.podman
+  # - chocolatey.chocolatey
+
+...
+
+
