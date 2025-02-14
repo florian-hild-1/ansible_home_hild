@@ -7,10 +7,13 @@ files_cache/
 ansible-config/
 old_files/
 playbooks_local/
-roles_wip
-ansible_collections
-ansible_collections_wip
-cache
+roles_wip/
+ansible_collections/
+ansible_collections_wip/
+cache/
+.ansible/
+.vscode/
+.devcontainer/
 
 # Ansible Galaxy
 meta/.galaxy_install_info
