@@ -1,0 +1,11 @@
+---
+# playbook file
+
+- name: Test role
+  hosts: "{{ ansible_limit | default(omit) }}"
+  gather_facts: true
+  become: true
+  roles:
+    - tool_check_remote_connection
+
+...

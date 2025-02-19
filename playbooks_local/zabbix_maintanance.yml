@@ -1,0 +1,30 @@
+---
+# playbook file
+
+- name: Test role
+  hosts: "{{ ansible_limit | default(omit) }}"
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Create zabbix host groups
+      delegate_to: localhost
+      become: false
+      vars:
+        ansible_network_os: community.zabbix.zabbix
+        ansible_connection: httpapi
+        ansible_httpapi_port: 443
+        ansible_httpapi_use_ssl: true
+        ansible_httpapi_validate_certs: true
+        ansible_zabbix_url_path: '/'
+        ansible_host: "{{ zabbix_server_fqdn }}"
+        ansible_user: "{{ zabbix_server_user }}"
+        ansible_zabbix_auth_key: "{{ zabbix_server_token }}"
+      community.zabbix.zabbix_maintenance:
+        name: Patching F.Hild
+        host_name: "{{ zabbix_customer_short_name }}_{{ ansible_hostname }}"
+        visible_name: false
+        state: present # absent
+        minutes: 90
+
+...
+

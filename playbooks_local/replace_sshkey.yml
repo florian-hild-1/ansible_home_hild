@@ -1,0 +1,45 @@
+---
+# playbook file
+
+- name: Search and Replace SSH Key
+  hosts: "{{ ansible_limit | default(omit) }}"
+  gather_facts: false
+  become: true
+  vars:
+    old_key: "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAltXz4K/9lzVBjoNRyDS/ZLnT+BRO2JQB+cmW/z6QPdIWHPsh6U2OpQmz0FhHXwM74ncDWpIjeQnFB3yxieQ9CdVGoFed0G+lH1yLnssLfsnChYjRFNfj6tdzjZQF7jggLaO02ARpfUeMk9sTkYRDFKXe1LhJ4rSsJph9OETzxonmLKmzWV2xsuTdYDezb1usiOFWlxOxXT31TQ5V+UywNKWR58EFzzrfkz22UbdCDv9FSm06tzIiop93oLwtwy7/k9G25GhT1l5DBEamQTAGqHcDAFHxFlvNndDYCKusoQqZjEtrcudrOmSLOkAm5zyeCnsNxyc2wEwTahyc6v5sDQ== hild-rsa-key-20200428"
+    new_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIUKP55s2YqhuDW8VYsRomUTEIcfc/10EPRRNTTNs/t hild-ed25519-key-20250212"
+  tasks:
+    - name: Check if authorized_keyz file exists
+      register: key_file_hild
+      ansible.builtin.stat:
+        path: /home/hild/.ssh/authorized_keys
+
+    - name: Check if authorized_keyz file exists
+      register: key_file_root
+      ansible.builtin.stat:
+        path: /root/.ssh/authorized_keys
+
+    - name: Remove old authorized key for account root
+      when: key_file_root.stat.exists
+      register: key_file_root_remove
+      ansible.posix.authorized_key:
+        user: root
+        state: absent
+        key: "{{ old_key }}"
+
+    - name: Add authorized key for account root
+      when: key_file_root.stat.exists and key_file_root_remove.changed
+      ansible.posix.authorized_key:
+        user: root
+        state: present
+        key: "{{ new_key }}"
+
+    - name: Set authorized key for account hild
+      when: key_file_hild.stat.exists
+      ansible.posix.authorized_key:
+        user: hild
+        state: present
+        exclusive: true
+        key: "{{ new_key }}"
+
+...

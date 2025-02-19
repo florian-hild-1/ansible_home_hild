@@ -1,24 +1,35 @@
+# Ignore specific folder and files
+roles_wip/
+ansible_collections_wip/
+
+# Ignore Ansible folders for config repo
 roles/
-roles_work/*/
-ansible_collections/*/
+ansible_collections/
 playbooks/
 environments/
+inventory/
 files_cache/
 ansible-config/
-old_files/
-playbooks_local/
-roles_wip/
-ansible_collections/
-ansible_collections_wip/
-cache/
-.ansible/
-.vscode/
-.devcontainer/
 
-# Ansible Galaxy
+# Ignore Ansible generated files
+.ansible/
+
+# Ignore molecule
+*/molecule/default*
+
+# Ignore Ansible Galaxy generated files
 meta/.galaxy_install_info
 
-# OS generated files
+# Ignore git worktree
+.worktree/
+
+# Ignore files created by IDE's
+.vscode/
+.devcontainer/
+.theia/
+.Trash*
+
+# Ignore OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -33,4 +44,3 @@ nohup.out
 $RECYCLE.BIN/
 [Dd]esktop.ini
 *~
-

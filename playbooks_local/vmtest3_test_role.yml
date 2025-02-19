@@ -1,0 +1,12 @@
+---
+# playbook file
+
+- name: Test role at host vmtest3
+  hosts: vmtest3
+  gather_facts: true
+  become: true
+  roles:
+    - setup_ssh_config
+
+...
+
